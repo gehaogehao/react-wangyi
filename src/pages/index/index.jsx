@@ -31,6 +31,7 @@ export default class Index extends Component {
   }
   //导航选中
   changeIndex=(index)=>{
+    console.log('--')
     this.setState({
       navIndex:index
     })
@@ -66,7 +67,7 @@ export default class Index extends Component {
               <div className="loginBtn">登录</div>
           </div>
           <div className="headerNav" ref={(ul)=>{this.headerNavScroll = ul}}>
-            <ul className="scroll" style={{display: `${isBottom?'block':'none'}`}}>
+            <ul className="scroll" style={{display: `${isBottom?'inline-block':'none'}`}}>
               {
                 indexCategoryList.map((item,index) =>
                   <li className={`item ${index === navIndex ?'active':''}`} key={item.id} onClick={()=>{this.changeIndex(index)}}>{item.name}</li>
