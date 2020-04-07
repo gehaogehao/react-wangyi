@@ -7,10 +7,12 @@ import car from './pages/car/car'
 import personal from './pages/personal/personal'
 import Footer from './components/footer/footer'
 import './App.stylus'
+
 export default class App extends Component {
+
   render() {
     return (
-      <div className='app'>
+      <div className='app;;'>
         <Switch>
           <Route path="/index" component={index}></Route>
           <Route path="/sort" component={sort}></Route>
