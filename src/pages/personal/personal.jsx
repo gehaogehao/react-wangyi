@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "./css/personal.stylus"
 import yanxuan from '../../static/personal/yanxuan.png'
 import {Link} from  'react-router-dom'
+import Formsy from 'formsy-react';
 
 export default class Personal extends Component {
   state={
