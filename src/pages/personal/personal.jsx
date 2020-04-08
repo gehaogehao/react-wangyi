@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./css/personal.stylus"
 import yanxuan from '../../static/personal/yanxuan.png'
+import {Link} from  'react-router-dom'
 
 export default class Personal extends Component {
   state={
@@ -36,7 +37,7 @@ export default class Personal extends Component {
     return (
       <div className="loginContainer">
          <div className="loginHeader">
-          <i className="iconfont icon-fangzi"></i>
+          <Link to="/index"><i className="iconfont icon-fangzi"></i></Link>
           <span>网易严选</span>
           <div className="iconRight">
             <i className="iconfont icon-sousuo1"></i>
