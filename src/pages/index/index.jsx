@@ -56,7 +56,6 @@ export default class Index extends Component {
   }
   //导航选中
   changeIndex=(index)=>{
-    console.log('--')
     this.setState({
       navIndex:index
     })
