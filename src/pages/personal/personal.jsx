@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import "./css/personal.stylus"
 import yanxuan from '../../static/personal/yanxuan.png'
 import {Link} from  'react-router-dom'
-import Formsy from 'formsy-react';
+import { createForm, formShape } from 'rc-form'
 
-export default class Personal extends Component {
+class Personal extends Component {
   state={
     isLogin:true,
     isPhone:false,
@@ -33,8 +33,20 @@ export default class Personal extends Component {
     })
   }
 
+  static propTypes = {
+    form: formShape,
+  };
+
+  submit = () => {
+    this.props.form.validateFields((error, value) => {
+      console.log(error, value);
+    });
+  }
+
   render() {
     const {isLogin,isPhone,isEmail} = this.state
+    let errors;
+    const { getFieldProps, getFieldError } = this.props.form;
     return (
       <div className="loginContainer">
          <div className="loginHeader">
@@ -107,12 +119,13 @@ export default class Personal extends Component {
           <div className="input-groups">
             <form action="">
                 <div className="email">
-                  <input type="text" placeholder="邮箱帐号"/>
+                  <input type="text" placeholder="邮箱帐号"{...getFieldProps('required',{onChange(){},rules: [{required: true}],})}/>
+                  {(errors = getFieldError('required')) ? errors.join(',') : null}
                 </div>
                 <div className="password">
-                  <input type="password" placeholder="密码" />
+                  <input type="password" placeholder="密码" {...getFieldProps('normal')} />
                 </div>
-                <div className="submit"><input type="submit" value="登录"/></div>
+                <div className="submit"><input type="submit" value="登录" onClick={this.submit}/></div>
             </form>
           </div>
           <div className="emailFooter" onClick={this.otherChange}>
@@ -125,3 +138,4 @@ export default class Personal extends Component {
     )
   }
 }
+export default  createForm()(Personal)
